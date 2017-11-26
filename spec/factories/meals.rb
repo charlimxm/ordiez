@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :meal do
-    name "MyString"
-    description "MyString"
+    name { Faker::Food.dish }
+    description { Faker::Lorem.paragraph }
   end
 end
