@@ -4,8 +4,7 @@ class DeliveryOrder < ApplicationRecord
   has_many :meals, through: :order_items
 
   def as_json(options={})
-    super(
-          except: [:id, :serving_datetime],
+    super(except: [:id, :serving_datetime],
           methods: [:delivery_date, :delivery_time])
   end
 
