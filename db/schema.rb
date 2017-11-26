@@ -18,15 +18,11 @@ ActiveRecord::Schema.define(version: 20171125134542) do
   create_table "delivery_orders", force: :cascade do |t|
     t.string "order_id"
     t.datetime "serving_datetime"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -34,8 +30,6 @@ ActiveRecord::Schema.define(version: 20171125134542) do
     t.bigint "meal_id"
     t.integer "quantity"
     t.integer "unit_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["delivery_order_id"], name: "index_order_items_on_delivery_order_id"
     t.index ["meal_id"], name: "index_order_items_on_meal_id"
   end

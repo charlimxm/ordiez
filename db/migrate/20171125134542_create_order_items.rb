@@ -5,8 +5,6 @@ class CreateOrderItems < ActiveRecord::Migration[5.1]
       t.references :meal, foreign_key: true
       t.integer :quantity
       t.integer :unit_price
-
-      t.timestamps
     end
   end
 end
