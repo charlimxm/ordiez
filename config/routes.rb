@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
-
-  namespace :api, defaults: { format: :json }, path: '/api'  do
+mmRails.application.routes.draw do
 
   get 'orders', to: 'delivery_orders#index'
 
@@ -9,4 +7,5 @@ Rails.application.routes.draw do
   get 'orders/:order_id/feedbacks', to: 'feedbacks#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
