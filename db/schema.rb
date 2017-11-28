@@ -10,26 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125134542) do
+ActiveRecord::Schema.define(version: 20171127065922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "delivery_orders", force: :cascade do |t|
-    t.string "order_id"
-    t.datetime "serving_datetime"
+    t.string "order_id", null: false
+    t.datetime "serving_datetime", null: false
+    t.boolean "feedback_submitted", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "ratable_id"
+    t.string "ratable_type"
+    t.integer "rating"
+    t.string "comment"
+    t.index ["ratable_type", "ratable_id"], name: "index_feedbacks_on_ratable_type_and_ratable_id"
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", null: false
+    t.string "description", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.bigint "delivery_order_id"
-    t.bigint "meal_id"
-    t.integer "quantity"
-    t.integer "unit_price"
+    t.bigint "delivery_order_id", null: false
+    t.bigint "meal_id", null: false
+    t.integer "quantity", null: false
+    t.integer "unit_price", null: false
     t.index ["delivery_order_id"], name: "index_order_items_on_delivery_order_id"
     t.index ["meal_id"], name: "index_order_items_on_meal_id"
   end
